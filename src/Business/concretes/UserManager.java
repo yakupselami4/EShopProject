@@ -15,7 +15,7 @@ public class UserManager implements UserService{
 		String emailRegex="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
 		Pattern emailPat= Pattern.compile(emailRegex,Pattern.CASE_INSENSITIVE);
 		Matcher matcher= emailPat.matcher(user.getEmail());
-		System.out.println("Email doðrulanmasý sona erdi.");
+		System.out.println("Email doÄŸrulanmasÄ± sona erdi.");
 		return matcher.find();
 	}
 
@@ -23,7 +23,7 @@ public class UserManager implements UserService{
 	@Override
 	public boolean CheckEmailIfCorrectStep2(User user) {
 		if(user.getEmail().isEmpty()) {
-			System.out.println("Email bulunamadý.");
+			System.out.println("Email bulunamadÄ±.");
 			return false;
 		}
 		System.out.println("Email sistemde bulundu."+user.getEmail());
@@ -33,10 +33,10 @@ public class UserManager implements UserService{
 	@Override
 	public boolean CheckPasswordLength(User user) {
 		if (user.getPassword().length()<6 || user.getPassword().isEmpty()) {
-			System.out.println("Þifreniz 6 karakterden oluþmalýdýr.");
+			System.out.println("Åžifreniz 6 karakterden oluÅŸmalÄ±dÄ±r.");
 			return false;
 		}else {
-			System.out.println("Þifre kaydedildi.");
+			System.out.println("Åžifre kaydedildi.");
 			return true;
 		}
 		
@@ -45,10 +45,10 @@ public class UserManager implements UserService{
 	@Override
 	public boolean CheckFirstNameLength(User user) {
 		if(user.getFirstName().length()<2 || user.getFirstName().isEmpty()) {
-			System.out.println("Ýsminiz 2 karakterten küçük olamaz.");
+			System.out.println("Ä°sminiz 2 karakterten kÃ¼Ã§Ã¼k olamaz.");
 			return false;
 		}else {
-			System.out.println("Ýsminiz kaydedildi.");
+			System.out.println("Ä°sminiz kaydedildi.");
 			return true;
 		}
 		
@@ -57,10 +57,10 @@ public class UserManager implements UserService{
 	@Override
 	public boolean CheckLastNameLength(User user) {
 		if(user.getLastName().length()<2 || user.getLastName().isEmpty()) {
-			System.out.println("Soyadýnýz 2 karakterten küçük olamaz.");
+			System.out.println("SoyadÄ±nÄ±z 2 karakterten kÃ¼Ã§Ã¼k olamaz.");
 			return false;
 		}else {
-			System.out.println("Soyadýnýz kaydedildi.");
+			System.out.println("SoyadÄ±nÄ±z kaydedildi.");
 			return true;
 		}
 		
@@ -69,9 +69,9 @@ public class UserManager implements UserService{
 
 	@Override
 	public void login(User user) {
-		System.out.println("Giriþ iþlemi daha önceden doðrulanmýþ olan email ve þifre üzerinden otomatik olarak gerçekleþtirilmektedir.");
+		System.out.println("GiriÅŸ iÅŸlemi daha Ã¶nceden doÄŸrulanmÄ±ÅŸ olan email ve ÅŸifre Ã¼zerinden otomatik olarak gerÃ§ekleÅŸtirilmektedir.");
 		System.out.println("email: "+user.getEmail());
-		System.out.println("þifre: "+user.getPassword());
+		System.out.println("ÅŸifre: "+user.getPassword());
 		
 		
 	}
@@ -85,12 +85,12 @@ public class UserManager implements UserService{
 		CheckFirstNameLength(user) &&
 		CheckLastNameLength(user) &&
 		CheckPasswordLength(user)) {
-			System.out.println("Kayýt iþlemi baþarýlý...");
+			System.out.println("KayÄ±t iÅŸlemi baÅŸarÄ±lÄ±...");
 			return true;		
 			
 		}else
 		{
-			System.out.println("Kayýt iþlemi baþarýsýz.");
+			System.out.println("KayÄ±t iÅŸlemi baÅŸarÄ±sÄ±z.");
 			return false;
 		}
 
@@ -101,10 +101,10 @@ public class UserManager implements UserService{
 	@Override
 	public boolean SendVerificationMessage(User user) {
 		if (CheckEmailIfCorrect(user)&& CheckEmailIfCorrectStep2(user)) {
-			System.out.println("Email adresiniz doðrulandý: "+user.getEmail());
+			System.out.println("Email adresiniz doÄŸrulandÄ±: "+user.getEmail());
 			return true;
 		}else {
-			System.out.println("Email adresiniz doðrulama aþamasýný geçemedi, kurallara uyduðunuza dikkat edin.");
+			System.out.println("Email adresiniz doÄŸrulama aÅŸamasÄ±nÄ± geÃ§emedi, kurallara uyduÄŸunuza dikkat edin.");
 			return false;
 		}
 		
@@ -117,7 +117,7 @@ public class UserManager implements UserService{
 		if(googleadapt.connectGoogle(user)) {
 			return true;
 		}else {
-		return true;	
+		return false;	
 		}
 		
 		
